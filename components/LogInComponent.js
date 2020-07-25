@@ -171,8 +171,8 @@ class RegisterTab extends Component {
 			imgUri,
 			[
 				{
-					width: 400
-				}
+					width: 400,
+				},
 			],
 			{
 				compress: 1,
@@ -184,19 +184,21 @@ class RegisterTab extends Component {
 	};
 
 	getImageFromGallery = async () => {
-		const cameraRollPermissions = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+		const cameraRollPermissions = await Permissions.askAsync(
+			Permissions.CAMERA_ROLL
+		);
 
 		if (cameraRollPermissions.status === 'granted') {
 			const capturedImage = await ImagePicker.launchImageLibraryAsync({
 				allowsEditing: true,
 				aspect: [1, 1],
-		});
-		if (!capturedImage.cancelled) {
-			console.log(capturedImage);
-			processImage(capturedImage.uri);
+			});
+			if (!capturedImage.cancelled) {
+				console.log(capturedImage);
+				processImage(capturedImage.uri);
+			}
 		}
 	};
-}
 
 	handleRegister() {
 		console.log(JSON.stringify(this.state));
