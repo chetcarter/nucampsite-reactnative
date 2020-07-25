@@ -183,6 +183,10 @@ class RegisterTab extends Component {
 		this.setState({ imageUrl: processedImage.uri });
 	};
 
+	saveImageToGallery = async (imgUri) => {
+		const savedImage = await MediaLibrary.saveToLibraryAsync(imgUri)
+	};
+
 	getImageFromGallery = async () => {
 		const cameraRollPermissions = await Permissions.askAsync(
 			Permissions.CAMERA_ROLL
